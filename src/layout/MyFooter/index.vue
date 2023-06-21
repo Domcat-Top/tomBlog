@@ -12,6 +12,7 @@
 
 <style lang="scss" scoped>
 .footer-wrapper {
+  // 这是钉死在底部了，无论什么时候都存在
   position: fixed;
   left: 0;
   bottom: 0;
@@ -23,7 +24,7 @@
   background-size: 300% 300%;
 
   // 动画---要不就不放了，不会搞这个颜色搭配，实在是没有美感
-  animation: gradientBG 10s ease infinite;
+  // animation: gradientBG 10s ease infinite;
 }
 
 @keyframes gradientBG {

@@ -88,7 +88,7 @@ onMounted(() => {
     top: 0;
     left: 0;
     width: 100%;
-    height: 90vh;
+    height: 80vh;
     z-index: -9;
     background-color: #363636;
     overflow: hidden;
@@ -205,8 +205,8 @@ onMounted(() => {
     position: fixed;
     .position {
       position: absolute;
-      left: 37vw;
-      top: 40vh;
+      left: 40.5vw;
+      top: 42vh;
       width: 1000px;
       font-size: 25px;
       color: white;
