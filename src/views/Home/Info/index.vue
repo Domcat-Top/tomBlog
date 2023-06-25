@@ -51,11 +51,27 @@
         </div>
 
         <div class="notice">
-          <div class="title">图标 + 标题</div>
-          <div class="info">后端基于SpringBoot开发，前端基于Vue3 Ts Navie UI开发</div>
+          <div class="title">
+            <!-- 这个图标后期要替换的，最后等项目结束再找图标吧 -->
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-shouye"></use>
+            </svg>
+            公告
+          </div>
+          <div class="info">记录一下开发中遇到到知识点。</div>
         </div>
-        <div class="fiveArticle">访问前五</div>
-        <div class="websiteInfo">网站信息</div>
+        <div class="question">这一块儿我不知道该写什么了</div>
+        <div class="websiteInfo">
+          <div class="title">
+            <span>图标</span>
+            <span>网站咨询</span>
+          </div>
+          <div class="content">
+            <div class="titleNumber">文章数</div>
+            <div class="currentTime">当前时间</div>
+            <div class="totalClick">总访问量</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -193,13 +209,46 @@ import Waves from '@/components/Waves/index.vue'
           font-size: 1.2rem;
         }
         .info {
+          display: flex;
           margin: 0px 15px 15px 15px;
           font-size: 15px;
           letter-spacing: 0.03em;
-          word-break: break-all;
-          word-wrap: break-word;
+          // 这个为啥不生效，我不知道
+          white-space: pre-wrap;
           text-align: left;
         }
+      }
+      // 这一块儿不知道改写什么了
+      .question {
+        width: 260px;
+        // 下面15px
+        margin-bottom: 15px;
+        background-color: white;
+        border-radius: 10px;
+        // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        .title {
+          margin: 18px 15px 5px 15px;
+          font-size: 1.2rem;
+        }
+        .info {
+          display: flex;
+          margin: 0px 15px 15px 15px;
+          font-size: 15px;
+          letter-spacing: 0.03em;
+          // 这个为啥不生效，我不知道
+          white-space: pre-wrap;
+          text-align: left;
+        }
+      }
+      // 网站信息卡牌
+      .websiteInfo {
+        width: 260px;
+        background-color: white;
+        border-radius: 10px;
+        // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        
       }
     }
   }
