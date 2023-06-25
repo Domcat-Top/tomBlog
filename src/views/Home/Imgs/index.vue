@@ -48,27 +48,27 @@
     <div class="printer">
       <span class="position">{{ obj.output }}</span>
       <!-- 这是个动画，实现一闪一闪的效果 -->
-      <span class="position end-symble" style="margin-left: 440px;">|</span>
+      <span class="position end-symble" style="margin-left: 440px">|</span>
     </div>
   </div>
 </template>
   
   <script setup lang="ts">
 // 打字机
-import EasyTyper from "easy-typer-js";
+import EasyTyper from 'easy-typer-js'
 // 挂载
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive } from 'vue'
 
 const obj = reactive({
-  output: "",
+  output: '',
   isEnd: false,
   speed: 100,
   singleBack: false,
   sleep: 0,
-  type: "normal",
+  type: 'normal',
   backSpeed: 100,
-  sentencePause: false,
-});
+  sentencePause: false
+})
 
 // 这里替换后端接口，但是需要确定一下字的数量，否则会出现答辩
 onMounted(() => {
@@ -77,8 +77,8 @@ onMounted(() => {
     `须知少日拏云志，曾许人间第一流。`,
     () => {},
     () => {}
-  );
-});
+  )
+})
 </script>
   
 <style lang="scss" scoped>
@@ -94,7 +94,7 @@ onMounted(() => {
     overflow: hidden;
 
     &::before {
-      content: "";
+      content: '';
       display: block;
       position: absolute;
       top: 0;
@@ -179,7 +179,7 @@ onMounted(() => {
       top: 30vh;
       width: 500px;
       color: white;
-      font-family: "Fredericka-the-great";
+      font-family: 'Fredericka-the-great';
       font-size: 50px;
       line-height: 1.2;
       animation: titleScale 1.2s;
@@ -195,8 +195,8 @@ onMounted(() => {
         }
       }
       @font-face {
-        font-family: "Fredericka-the-great";
-        src: url("@/style/font/Fredericka-the-great.ttf");
+        font-family: 'Fredericka-the-great';
+        src: url('@/style/font/Fredericka-the-great.ttf');
       }
     }
   }
@@ -206,7 +206,7 @@ onMounted(() => {
     .position {
       position: absolute;
       left: 40.5vw;
-      top: 42vh;
+      top: 38.5vh;
       width: 1000px;
       font-size: 25px;
       color: white;

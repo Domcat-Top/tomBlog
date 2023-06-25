@@ -1,4 +1,6 @@
 <template>
+  <!-- 最上面放一个波浪组件 -->
+  <Waves></Waves>
   <div class="container">
     <div class="specific">
       <!-- 这里放卡片和个人信息 -->
@@ -10,8 +12,24 @@
       <div class="info">
         <div class="selfInfo">
           <img src="../../../assets/logo.jpg" alt="tomAvatar" />
-          <span>Tom</span>
-          <span class="font">欢迎来到汤姆的博客</span>
+          <span class="tom">Tom</span>
+          <span class="welcome">欢迎来到汤姆的博客</span>
+          <!-- 这里还是需要展示一下博客、标签、分类数量，否则太突兀了，不好看 -->
+          <div class="number">
+            <div class="blogNumber">
+              <div class="specificNumber">1</div>
+              <div>文章</div>
+            </div>
+            <div class="classifyNumber">
+              <div class="specificNumber">99</div>
+              <div>分类</div>
+            </div>
+
+            <div class="labelNumber">
+              <div class="specificNumber">99</div>
+              <div>标签</div>
+            </div>
+          </div>
           <div class="svgLine">
             <!-- 码云 -->
             <svg class="icon" aria-hidden="true">
@@ -31,7 +49,11 @@
             </svg>
           </div>
         </div>
-        <div class="notice">这是一则公告，欢迎你的到访</div>
+
+        <div class="notice">
+          <div class="title">图标 + 标题</div>
+          <div class="info">后端基于SpringBoot开发，前端基于Vue3 Ts Navie UI开发</div>
+        </div>
         <div class="fiveArticle">访问前五</div>
         <div class="websiteInfo">网站信息</div>
       </div>
@@ -40,12 +62,14 @@
 </template>
 
 <script setup lang="ts">
+// 波浪组件
+import Waves from '@/components/Waves/index.vue'
 </script>
 
 <style lang="scss" scoped>
 .container {
   position: absolute;
-  top: 75vh;
+  top: 76vh;
   width: 100%;
   background-color: white;
   height: 2000px;
@@ -56,23 +80,29 @@
     // 左右排布
     display: flex;
     justify-content: space-between;
+    // 左边的卡片列表
     .cardList {
       width: 860px;
       height: 2000px;
       background-color: cadetblue;
     }
+    // 右边的信息，比如作者信息，网站公告等
     .info {
       width: 290px;
       display: flex;
       flex-direction: column;
+      margin-left: 15px;
+      // 作者信息
       .selfInfo {
         display: flex;
         flex-direction: column;
         width: 260px;
-        margin: 15px 15px;
+        // 下面15，左边
+        margin-bottom: 15px;
         background-color: white;
         border-radius: 10px;
-        box-shadow: 0 0 1rem grey;
+        // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         img {
           // 只有这个生效了，我也不知道为什么，很是奇怪
           margin: 0px auto;
@@ -81,16 +111,60 @@
           height: 110px;
           border-radius: 100%;
         }
-        span {
-          font-size: 15px;
-          color: grey;
+        .tom {
+          font-size: 20px;
+          color: rgb(87, 87, 87, 0.8);
           // 只有这个生效了，我也不知道为什么，很是奇怪
           margin: 0px auto;
           margin-top: 5px;
           line-height: 1.4;
         }
-        .font {
+        .welcome {
+          // 只有这个生效了，我也不知道为什么，很是奇怪
+          margin: 0px auto;
+          font-size: 15px;
           letter-spacing: 0.1em;
+          color: rgb(150, 150, 150, 0.7);
+        }
+        // 这里显示的是文章、分类、标签数
+        .number {
+          font-size: 17px;
+          display: flex;
+          margin: 0 auto;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          font-size: 16px;
+          .blogNumber {
+            border-right: 1px solid rgb(150, 150, 150, 0.8);
+            padding-right: 12px;
+            // 搭配下面的，实现水平居中
+            display: grid;
+            .specificNumber {
+              font-size: 20px;
+              font-weight: 1000;
+              margin: auto;
+            }
+          }
+          .classifyNumber {
+            border-right: 1px solid rgb(150, 150, 150, 0.8);
+            padding-left: 12px;
+            padding-right: 12px;
+            display: grid;
+            .specificNumber {
+              font-size: 20px;
+              font-weight: 1000;
+              margin: auto;
+            }
+          }
+          .labelNumber {
+            padding-left: 12px;
+            display: grid;
+            .specificNumber {
+              font-size: 20px;
+              font-weight: 1000;
+              margin: auto;
+            }
+          }
         }
         .svgLine {
           display: flex;
@@ -103,6 +177,28 @@
             width: 30px;
             height: 30px;
           }
+        }
+      }
+      // 公告信息
+      .notice {
+        width: 260px;
+        // 下面15px
+        margin-bottom: 15px;
+        background-color: white;
+        border-radius: 10px;
+        // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        .title {
+          margin: 18px 15px 5px 15px;
+          font-size: 1.2rem;
+        }
+        .info {
+          margin: 0px 15px 15px 15px;
+          font-size: 15px;
+          letter-spacing: 0.03em;
+          word-break: break-all;
+          word-wrap: break-word;
+          text-align: left;
         }
       }
     }

@@ -23,8 +23,8 @@
   background: var(--footer-bg);
   background-size: 300% 300%;
 
-  // 动画---要不就不放了，不会搞这个颜色搭配，实在是没有美感
-  // animation: gradientBG 10s ease infinite;
+  // 动画---要不就不放了，不会搞这个颜色搭配，实在是没有美感---暂时还是放上去了
+  animation: gradientBG 10s ease infinite;
 }
 
 @keyframes gradientBG {
