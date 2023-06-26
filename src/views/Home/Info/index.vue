@@ -7,7 +7,7 @@
       <div class="cardList">
         <!-- 这里加一个小条幅，显示一下最近的提示消息，最后端的时候再写吧 -->
         <div class="welcomeCard">
-          <span class="welcomeIcon" style="margin-right: 5px;">
+          <span class="welcomeIcon" style="margin-right: 5px">
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-shouye"></use>
             </svg>
@@ -45,9 +45,19 @@
         <div class="card">
           <div class="info">
             <div class="titleLine">
-              <span>图标 + 日期</span>
-              |
-              <span>For循环展示当前文章的标签</span>
+              <div class="timeStyle">
+                <svg class="icon" aria-hidden="true" style="margin-right: 3px">
+                  <use xlink:href="#icon-shouye"></use>
+                </svg>
+                <span style="margin-right: 10px">{{ new Date().toLocaleString() }}</span>
+              </div>
+              <!-- for 循环生成标签和标签的内容 -->
+              <div class="labelStyle">
+                <svg class="icon" aria-hidden="true" style="margin-right: 2px">
+                  <use xlink:href="#icon-shouye"></use>
+                </svg>
+                <span style="margin-right: 10px">Java</span>
+              </div>
             </div>
             <div class="contentInfo">
               <span>文章标题（红色加粗）</span>
@@ -217,7 +227,6 @@ onMounted(() => {
   // 版心
   .specific {
     margin-top: 20px;
-
     width: 1160px;
     margin-left: calc((100% - 1160px) / 2);
     // 左右排布
@@ -299,6 +308,22 @@ onMounted(() => {
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         border-radius: 10px;
+        .info {
+          margin: 15px 15px;
+          .titleLine {
+            font-size: 13px;
+            height: 30px;
+            line-height: 30px;
+            display: flex;
+            align-content: center;
+            color: rgba(150, 150, 150, 1);
+          }
+          .contentInfo {
+            
+          }
+          .bottomLine {
+          }
+        }
         .articleImg {
           img {
             width: 350px;
