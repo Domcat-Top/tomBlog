@@ -5,6 +5,15 @@
     <div class="specific">
       <!-- 左边的卡片 -->
       <div class="cardList">
+        <!-- 这里加一个小条幅，显示一下最近的提示消息，最后端的时候再写吧 -->
+        <div class="welcomeCard">
+          <span class="welcomeIcon" style="margin-right: 5px;">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-shouye"></use>
+            </svg>
+          </span>
+          <span class="content">欢迎阅读Tom的博客</span>
+        </div>
         <!-- 轮播图 -->
         <!-- 轮播图组件，展示的是置顶的文章 -->
         <swiper
@@ -168,7 +177,7 @@ import 'swiper/swiper.min.css'
 
 //自动轮播的配置
 const autoplayOptions = {
-  delay: 99999,
+  delay: 5000,
   // 不会自动禁用轮播图
   disableOnInteraction: false,
   loop: false,
@@ -207,67 +216,81 @@ onMounted(() => {
   height: 2000px;
   // 版心
   .specific {
+    margin-top: 20px;
+
     width: 1160px;
     margin-left: calc((100% - 1160px) / 2);
     // 左右排布
     display: flex;
     justify-content: space-between;
-    // 这里是轮播图。显示的是置顶的文章
-    .swiper {
-      // 设置阴影
-      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-      margin-bottom: 15px;
-      width: 890px;
-      height: 230px;
-      border-radius: 10px;
-      // API：设置左右两个小标的颜色和大小
-      --swiper-navigation-color: rgba(148, 228, 255, 0.85);
-      --swiper-navigation-size: 30px;
-      // 深度修改swiper的内部样式，没这样写过，也不晓得
-      ::v-deep .swiper-pagination-bullet {
-        width: 10px;
-        height: 10px;
-        background-color: #ffffff;
-        opacity: 1;
-      }
-      // 下面小圆点选中的样式
-      ::v-deep .swiper-pagination-bullet-active {
-        width: 20px;
-        height: 10px;
-        border-radius: 3px;
-        opacity: 1;
-        background-color: rgba(0, 255, 255, 0.5);
-      }
-      // 图片的样式，有些扁平
-      .swiper-slide {
-        border-radius: 10px;
-        width: 890px;
-        height: 230px;
-        background-position: center;
-        background-size: cover;
-
-        .title {
-          display: block;
-          text-align: center;
-          margin: 0 auto;
-          margin-top: 80px;
-          font-size: 30px;
-          color: white;
-        }
-        .time {
-          display: block;
-          text-align: center;
-          margin: 0 auto;
-          margin-top: 5px;
-          font-size: 18px;
-          color: white;
-        }
-      }
-    }
     // 左边的卡片列表
     .cardList {
       width: 890px;
       height: 2000px;
+      // 欢迎语，这个可以搞成一个说说之类的
+      .welcomeCard {
+        width: 100%;
+        height: 40px;
+        // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        border-radius: 7px;
+        font-size: 20px;
+        margin-bottom: 15px;
+        text-align: center;
+        line-height: 40px;
+      }
+      // 这里是轮播图。显示的是置顶的文章
+      .swiper {
+        // 设置阴影
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+        width: 890px;
+        height: 230px;
+        border-radius: 10px;
+        // API：设置左右两个小标的颜色和大小
+        --swiper-navigation-color: rgba(148, 228, 255, 0.85);
+        --swiper-navigation-size: 30px;
+        // 深度修改swiper的内部样式，没这样写过，也不晓得
+        ::v-deep .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background-color: #ffffff;
+          opacity: 1;
+        }
+        // 下面小圆点选中的样式
+        ::v-deep .swiper-pagination-bullet-active {
+          width: 20px;
+          height: 10px;
+          border-radius: 3px;
+          opacity: 1;
+          background-color: rgba(0, 255, 255, 0.5);
+        }
+        // 图片的样式，有些扁平
+        .swiper-slide {
+          border-radius: 10px;
+          width: 890px;
+          height: 230px;
+          background-position: center;
+          background-size: cover;
+
+          .title {
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 80px;
+            font-size: 30px;
+            color: white;
+          }
+          .time {
+            display: block;
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 5px;
+            font-size: 18px;
+            color: white;
+          }
+        }
+      }
       // 这个后续要根据子节点 下标 的 奇数 和 偶数 进行一个样式的重新布置
       .card {
         height: 230px;
@@ -275,9 +298,7 @@ onMounted(() => {
         justify-content: space-between;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-        // 设置斜切角对面的角为圆
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
+        border-radius: 10px;
         .articleImg {
           img {
             width: 350px;
