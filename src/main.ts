@@ -15,6 +15,7 @@ import route from '@/router/index.ts';
 import '@/permission.ts';
 
 
+
 const app = createApp(App)
 
 app.use(route);
