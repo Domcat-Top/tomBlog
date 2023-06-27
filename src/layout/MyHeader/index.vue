@@ -9,40 +9,35 @@
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-shouye"></use>
           </svg>
-          首页</a
-        >
+          首页</a>
       </div>
       <div class="items">
-        <a href="#" class="hvr-underline-from-center">
+        <router-link to="/classify" class="hvr-underline-from-center">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-fanganxin"></use>
           </svg>
-          分类</a
-        >
+          分类</router-link>
       </div>
       <div class="items">
         <a href="#" class="hvr-underline-from-center">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-shijian"></use>
           </svg>
-          时间轴</a
-        >
+          时间轴</a>
       </div>
       <div class="items">
         <a href="#" class="hvr-underline-from-center">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-liaotianduihua"></use>
           </svg>
-          留言板</a
-        >
+          留言板</a>
       </div>
       <div class="items">
-        <a href="#" class="hvr-underline-from-center">
+        <router-link to="/about" class="hvr-underline-from-center">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-yonghu"></use>
           </svg>
-          关于我</a
-        >
+          关于我</router-link>
       </div>
     </div>
   </header>
@@ -61,6 +56,7 @@
   height: 70px;
   display: flex;
   justify-content: space-between;
+
   .logo {
     span {
       color: white;
@@ -70,10 +66,12 @@
       margin-left: 20px;
     }
   }
+
   .list {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     .items {
       a {
         color: white;
@@ -82,6 +80,7 @@
         margin-right: 10px;
       }
     }
+
     .items:last-child {
       margin-right: 30px;
     }

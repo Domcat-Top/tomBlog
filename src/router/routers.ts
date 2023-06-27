@@ -17,23 +17,27 @@ export const constantRoute = [
                 component: () => import('@/views/Home/index.vue'),
                 name: 'home',
             },  
+            // 分类
             {
                 path: '/classify',
                 component: () => import('@/views/Classify/index.vue'),
                 name: 'classify',
             },  
+            // 留言板
             {
                 path: '/message',
                 component: () => import('@/views/Message/index.vue'),
                 name: 'message',
             },  
+            // 时间轴
             {
                 path: '/time',
                 component: () => import('@/views/Time/index.vue'),
                 name: 'time',
             },  
+            // 关于我
             {
-                path: '/home',
+                path: '/about',
                 component: () => import('@/views/Home/index.vue'),
                 name: 'home',
             },   
