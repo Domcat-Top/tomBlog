@@ -43,10 +43,58 @@
               </div>
               <!-- for 循环生成标签和标签的内容 -->
               <div class="labelStyle">
-                <svg class="icon" aria-hidden="true" style="margin-right: 2px">
+                <div class="item">
+                  <svg class="icon" aria-hidden="true" style="margin-right: 2px">
+                    <use xlink:href="#icon-shouye"></use>
+                  </svg>
+                  <span style="margin-right: 10px">Java</span>
+                </div>
+                <div class="item">
+                  <svg class="icon" aria-hidden="true" style="margin-right: 2px">
+                    <use xlink:href="#icon-shouye"></use>
+                  </svg>
+                  <span style="margin-right: 10px">Java</span>
+                </div>
+              </div>
+            </div>
+            <div class="contentInfo">
+              <span class="title">文章标题（红色加粗）</span>
+              <div class="articleContent">
+                博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、
+              </div>
+            </div>
+            <div class="bottomLine">
+              <div class="readButton"><a href="#">More...</a></div>
+              <div class="classifyStyle">
+                <svg class="icon" aria-hidden="true" style="margin-right: 3px">
                   <use xlink:href="#icon-shouye"></use>
                 </svg>
-                <span style="margin-right: 10px">Java</span>
+                <span style="margin-right: 10px">分类名称</span>
+              </div>
+            </div>
+          </div>
+          <div class="articleImg">
+            <img src="../../../assets/delete.png" alt="文章的封面图片" />
+          </div>
+        </div>
+        <!-- 第二个卡片，我暂时粘贴的 -->
+        <div class="card">
+          <div class="info">
+            <div class="titleLine">
+              <div class="timeStyle">
+                <svg class="icon" aria-hidden="true" style="margin-right: 3px">
+                  <use xlink:href="#icon-shouye"></use>
+                </svg>
+                <span style="margin-right: 10px">{{ new Date().toLocaleString() }}</span>
+              </div>
+              <!-- for 循环生成标签和标签的内容 -->
+              <div class="labelStyle">
+                <div class="item">
+                  <svg class="icon" aria-hidden="true" style="margin-right: 2px">
+                    <use xlink:href="#icon-shouye"></use>
+                  </svg>
+                  <span style="margin-right: 10px">Java</span>
+                </div>
               </div>
             </div>
             <div class="contentInfo">
@@ -315,6 +363,46 @@ onMounted(() => {
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         border-radius: 10px;
+        margin-bottom: 15px;
+        // 下面两行设置了图片缩放时不超过原始div，也就是说，缩放的控制，是要放在最外部的盒子
+        position: relative;
+        overflow: hidden;
+        // 开启过渡
+        transition: all 0.15s ease-in-out 0s;
+
+        // 巧妙的写法，需要加一个取地址符，指定是父盒子吧
+        &:hover {
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+
+          .articleImg {
+            transform: scale(1.05) rotate(1deg);
+          }
+        }
+
+        // 下一个孩子，需要实现左右排布
+        &:nth-child(even) {
+          flex-direction: row-reverse;
+
+          // 设置图片切一刀的方向改变
+          .articleImg {
+            img {
+              /* 斜着切一刀 */
+              clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
+              // 设置斜切角对面的角为圆
+              border-radius: 10px 0 0 10px;
+
+            }
+          }
+
+          // 设置内容区的
+          .titleLine {
+            flex-direction: row-reverse;
+          }
+
+          .bottomLine {
+            flex-direction: row-reverse;
+          }
+        }
 
         .info {
           width: 520px;
@@ -325,8 +413,12 @@ onMounted(() => {
             height: 30px;
             line-height: 30px;
             display: flex;
-            align-content: center;
+            justify-content: space-between;
             color: rgba(150, 150, 150, 1);
+
+            .labelStyle {
+              display: flex;
+            }
           }
 
           // 文章标题和文章内容
@@ -367,6 +459,12 @@ onMounted(() => {
               font-size: 16px;
               background-image: linear-gradient(to right, #ec8c69 0, #ed6ea0 100%);
               border-radius: 3px;
+              // 开启过渡
+              transition: all 0.15s ease-in-out 0s;
+
+              &:hover {
+                transform: scale(1.05);
+              }
 
               a {
                 margin: 10px;
@@ -384,15 +482,16 @@ onMounted(() => {
         }
 
         .articleImg {
+          // 开启过渡
+          transition: all 0.15s ease-in-out 0s;
+
           img {
             width: 350px;
             height: 100%;
             /* 斜着切一刀 */
-            // 删掉了关于Chrome的兼容性写法
             clip-path: polygon(0 0, 100% 0, 100% 100%, 8% 100%);
             // 设置斜切角对面的角为圆
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-radius: 0 10px 10px 0;
           }
         }
       }
@@ -416,6 +515,13 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        // 开启过渡
+        transition: all 0.15s ease-in-out 0s;
+
+        // 巧妙的写法，需要加一个取地址符，指定是父盒子吧
+        &:hover {
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        }
 
         img {
           // 只有这个生效了，我也不知道为什么，很是奇怪
@@ -514,6 +620,13 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        // 开启过渡
+        transition: all 0.15s ease-in-out 0s;
+
+        // 巧妙的写法，需要加一个取地址符，指定是父盒子吧
+        &:hover {
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        }
 
         .title {
           margin: 18px 15px 5px 15px;
@@ -541,6 +654,13 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        // 开启过渡
+        transition: all 0.15s ease-in-out 0s;
+
+        // 巧妙的写法，需要加一个取地址符，指定是父盒子吧
+        &:hover {
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        }
 
         .title {
           margin: 18px 15px 5px 15px;
@@ -582,6 +702,13 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是rgb，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        // 开启过渡
+        transition: all 0.15s ease-in-out 0s;
+
+        // 巧妙的写法，需要加一个取地址符，指定是父盒子吧
+        &:hover {
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+        }
 
         .title {
           margin: 18px 15px 5px 15px;
