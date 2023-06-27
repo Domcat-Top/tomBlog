@@ -8,6 +8,7 @@
 <script setup lang="ts">
 import Imgs from './Imgs/index.vue'
 import Info from './Info/index.vue'
+
 </script>
 
 <style lang="scss" scoped>

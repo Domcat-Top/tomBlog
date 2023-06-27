@@ -114,6 +114,46 @@
             </div>
           </div>
           <div class="articleImg">
+            <img src="../../../assets/delete2.png" alt="文章的封面图片" />
+          </div>
+        </div>
+        <!-- 第3个卡片，我暂时粘贴的 -->
+        <div class="card">
+          <div class="info">
+            <div class="titleLine">
+              <div class="timeStyle">
+                <svg class="icon" aria-hidden="true" style="margin-right: 3px">
+                  <use xlink:href="#icon-shouye"></use>
+                </svg>
+                <span style="margin-right: 10px">{{ new Date().toLocaleString() }}</span>
+              </div>
+              <!-- for 循环生成标签和标签的内容 -->
+              <div class="labelStyle">
+                <div class="item">
+                  <svg class="icon" aria-hidden="true" style="margin-right: 2px">
+                    <use xlink:href="#icon-shouye"></use>
+                  </svg>
+                  <span style="margin-right: 10px">Java</span>
+                </div>
+              </div>
+            </div>
+            <div class="contentInfo">
+              <span class="title">文章标题（红色加粗）</span>
+              <div class="articleContent">
+                博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、
+              </div>
+            </div>
+            <div class="bottomLine">
+              <div class="readButton"><a href="#">More...</a></div>
+              <div class="classifyStyle">
+                <svg class="icon" aria-hidden="true" style="margin-right: 3px">
+                  <use xlink:href="#icon-shouye"></use>
+                </svg>
+                <span style="margin-right: 10px">分类名称</span>
+              </div>
+            </div>
+          </div>
+          <div class="articleImg">
             <img src="../../../assets/delete.png" alt="文章的封面图片" />
           </div>
         </div>
@@ -215,10 +255,13 @@
         </div>
       </div>
     </div>
+    <MyFooter></MyFooter>
   </div>
 </template>
 
 <script setup lang="ts">
+// 页脚
+import MyFooter from '@/layout/MyFooter/index.vue';
 // 波浪组件
 import Waves from '@/components/Waves/index.vue'
 import { ref, onMounted } from 'vue'
@@ -268,7 +311,6 @@ onMounted(() => {
   top: 76vh;
   width: 100%;
   background-color: white;
-  height: 2000px;
 
   // 版心
   .specific {
@@ -282,7 +324,6 @@ onMounted(() => {
     // 左边的卡片列表
     .cardList {
       width: 890px;
-      height: 2000px;
 
       // 欢迎语，这个可以搞成一个说说之类的
       .welcomeCard {
