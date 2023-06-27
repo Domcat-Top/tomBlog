@@ -16,27 +16,17 @@
         </div>
         <!-- 轮播图 -->
         <!-- 轮播图组件，展示的是置顶的文章 -->
-        <swiper
-          :modules="modules"
-          :pagination="{ clickable: true }"
-          :autoplay="autoplayOptions"
-          navigation
-          @swiper="onSwiper"
-          @slideChange="onSlideChange"
-        >
-          <swiper-slide
-            style="
+        <swiper :modules="modules" :pagination="{ clickable: true }" :autoplay="autoplayOptions" navigation
+          @swiper="onSwiper" @slideChange="onSlideChange">
+          <swiper-slide style="
               background-image: url('https://static.ttkwsd.top/articles/84aae58f4246f8419cf018d7d7f6bae8.jpg');
-            "
-          >
+            ">
             <span class="title">背包问题啥的</span>
             <span class="time">创建时间:{{ new Date().toLocaleString() }}</span>
           </swiper-slide>
-          <swiper-slide
-            style="
+          <swiper-slide style="
               background-image: url('https://static.ttkwsd.top/articles/5b43ce3015351615d3654b8cac53c525.jpg');
-            "
-          >
+            ">
             <span class="title">第二个轮播图</span>
             <span class="time">创建时间:{{ new Date().toLocaleString() }}</span>
           </swiper-slide>
@@ -60,12 +50,19 @@
               </div>
             </div>
             <div class="contentInfo">
-              <span>文章标题（红色加粗）</span>
-              <span>博客内容（限制显示的内容只有三行，多了省略号代替）</span>
+              <span class="title">文章标题（红色加粗）</span>
+              <div class="articleContent">
+                博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、博客内容（限制显示的内容只有三行，多了省略号代替）、
+              </div>
             </div>
             <div class="bottomLine">
-              <button>对角有弧度，居中more。。。</button>
-              <span>图标 + 分类</span>
+              <div class="readButton"><a href="#">More...</a></div>
+              <div class="classifyStyle">
+                <svg class="icon" aria-hidden="true" style="margin-right: 3px">
+                  <use xlink:href="#icon-shouye"></use>
+                </svg>
+                <span style="margin-right: 10px">分类名称</span>
+              </div>
             </div>
           </div>
           <div class="articleImg">
@@ -224,6 +221,7 @@ onMounted(() => {
   width: 100%;
   background-color: white;
   height: 2000px;
+
   // 版心
   .specific {
     margin-top: 20px;
@@ -232,10 +230,12 @@ onMounted(() => {
     // 左右排布
     display: flex;
     justify-content: space-between;
+
     // 左边的卡片列表
     .cardList {
       width: 890px;
       height: 2000px;
+
       // 欢迎语，这个可以搞成一个说说之类的
       .welcomeCard {
         width: 100%;
@@ -248,6 +248,7 @@ onMounted(() => {
         text-align: center;
         line-height: 40px;
       }
+
       // 这里是轮播图。显示的是置顶的文章
       .swiper {
         // 设置阴影
@@ -259,6 +260,7 @@ onMounted(() => {
         // API：设置左右两个小标的颜色和大小
         --swiper-navigation-color: rgba(148, 228, 255, 0.85);
         --swiper-navigation-size: 30px;
+
         // 深度修改swiper的内部样式，没这样写过，也不晓得
         ::v-deep .swiper-pagination-bullet {
           width: 10px;
@@ -266,6 +268,7 @@ onMounted(() => {
           background-color: #ffffff;
           opacity: 1;
         }
+
         // 下面小圆点选中的样式
         ::v-deep .swiper-pagination-bullet-active {
           width: 20px;
@@ -274,6 +277,7 @@ onMounted(() => {
           opacity: 1;
           background-color: rgba(0, 255, 255, 0.5);
         }
+
         // 图片的样式，有些扁平
         .swiper-slide {
           border-radius: 10px;
@@ -290,6 +294,7 @@ onMounted(() => {
             font-size: 30px;
             color: white;
           }
+
           .time {
             display: block;
             text-align: center;
@@ -300,16 +305,21 @@ onMounted(() => {
           }
         }
       }
-      // 这个后续要根据子节点 下标 的 奇数 和 偶数 进行一个样式的重新布置
+
+      // 文章的卡片
       .card {
-        height: 230px;
+        width: 890px;
+        height: 240px;
         display: flex;
         justify-content: space-between;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
         border-radius: 10px;
+
         .info {
+          width: 520px;
           margin: 15px 15px;
+
           .titleLine {
             font-size: 13px;
             height: 30px;
@@ -318,12 +328,61 @@ onMounted(() => {
             align-content: center;
             color: rgba(150, 150, 150, 1);
           }
+
+          // 文章标题和文章内容
           .contentInfo {
-            
+            height: 170px;
+
+            .title {
+              display: block;
+              margin: 13px 0px 10px 0px;
+              font-size: 22px;
+              font-weight: bold;
+              color: rgba(230, 46, 0, 0.85);
+              letter-spacing: 0.01em;
+            }
+
+            .articleContent {
+              font-size: 13px;
+              line-height: 27px;
+              // 下面五行，规定了div内显示的 文字行数 为 3
+              // 超出部分隐藏，这五个属性不能删掉任何一个，我也不知道为什么
+              display: -webkit-box;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+            }
           }
+
+          // 底部按钮和分类标签
           .bottomLine {
+            display: flex;
+            height: 40px;
+            justify-content: space-between;
+            margin-top: 10px;
+
+            .readButton {
+              height: 40px;
+              font-size: 16px;
+              background-image: linear-gradient(to right, #ec8c69 0, #ed6ea0 100%);
+              border-radius: 3px;
+
+              a {
+                margin: 10px;
+                color: white;
+                line-height: 40px;
+              }
+            }
+
+            .classifyStyle {
+              line-height: 40px;
+              font-size: 16px;
+              color: rgba(150, 150, 150, 1);
+            }
           }
         }
+
         .articleImg {
           img {
             width: 350px;
@@ -338,12 +397,14 @@ onMounted(() => {
         }
       }
     }
+
     // 右边的信息，比如作者信息，网站公告等
     .info {
       width: 260px;
       display: flex;
       flex-direction: column;
       margin-left: 15px;
+
       // 作者信息
       .selfInfo {
         display: flex;
@@ -355,6 +416,7 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+
         img {
           // 只有这个生效了，我也不知道为什么，很是奇怪
           margin: 0px auto;
@@ -363,6 +425,7 @@ onMounted(() => {
           height: 138px;
           border-radius: 100%;
         }
+
         .tom {
           font-size: 20px;
           color: rgb(87, 87, 87, 0.8);
@@ -371,6 +434,7 @@ onMounted(() => {
           margin-top: 5px;
           line-height: 1.4;
         }
+
         .welcome {
           // 只有这个生效了，我也不知道为什么，很是奇怪
           margin: 0px auto;
@@ -378,6 +442,7 @@ onMounted(() => {
           letter-spacing: 0.1em;
           color: rgb(150, 150, 150, 0.7);
         }
+
         // 这里显示的是文章、分类、标签数
         .number {
           font-size: 17px;
@@ -386,31 +451,37 @@ onMounted(() => {
           margin-top: 20px;
           margin-bottom: 10px;
           font-size: 16px;
+
           .blogNumber {
             border-right: 1px solid rgb(150, 150, 150, 0.8);
             padding-right: 12px;
             // 搭配下面的，实现水平居中
             display: grid;
+
             .specificNumber {
               font-size: 20px;
               font-weight: 1000;
               margin: auto;
             }
           }
+
           .classifyNumber {
             border-right: 1px solid rgb(150, 150, 150, 0.8);
             padding-left: 12px;
             padding-right: 12px;
             display: grid;
+
             .specificNumber {
               font-size: 20px;
               font-weight: 1000;
               margin: auto;
             }
           }
+
           .labelNumber {
             padding-left: 12px;
             display: grid;
+
             .specificNumber {
               font-size: 20px;
               font-weight: 1000;
@@ -418,11 +489,13 @@ onMounted(() => {
             }
           }
         }
+
         .svgLine {
           display: flex;
           justify-content: center;
           margin-top: 10px;
           margin-right: 15px;
+
           .icon {
             margin-left: 10px;
             margin-bottom: 10px;
@@ -431,6 +504,7 @@ onMounted(() => {
           }
         }
       }
+
       // 公告信息
       .notice {
         width: 260px;
@@ -440,10 +514,12 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+
         .title {
           margin: 18px 15px 5px 15px;
           font-size: 1.2rem;
         }
+
         .info {
           display: flex;
           margin: 0px 15px 15px 15px;
@@ -454,6 +530,7 @@ onMounted(() => {
           text-align: left;
         }
       }
+
       // 暂时考虑放五篇文章得了，但是这一块儿先不写了，如果这一块儿要改的话
       // 还需要去删掉数据库中临时添加的那个字段
       .fiveArticle {
@@ -464,13 +541,16 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+
         .title {
           margin: 18px 15px 5px 15px;
           font-size: 1.2rem;
         }
+
         .content {
           margin-left: 0 15px;
           display: flex;
+
           // 左边的文章封面图
           img {
             display: flex;
@@ -481,6 +561,7 @@ onMounted(() => {
             margin-left: 15px;
             margin-right: 10px;
           }
+
           // 右边显示文章的作者等信息
           .rightInfo {
             // 设置布局
@@ -493,6 +574,7 @@ onMounted(() => {
           }
         }
       }
+
       // 网站信息卡牌
       .websiteInfo {
         width: 260px;
@@ -500,23 +582,28 @@ onMounted(() => {
         border-radius: 10px;
         // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是rgb，透明度是0.1
         box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+
         .title {
           margin: 18px 15px 5px 15px;
           font-size: 1.2rem;
         }
+
         .content {
           margin: 0px 15px 15px 15px;
           font-size: 15px;
           letter-spacing: 0.03em;
           line-height: 1.8;
+
           .titleNumber {
             display: flex;
             justify-content: space-between;
           }
+
           .currentTime {
             display: flex;
             justify-content: space-between;
           }
+
           .totalClick {
             display: flex;
             justify-content: space-between;

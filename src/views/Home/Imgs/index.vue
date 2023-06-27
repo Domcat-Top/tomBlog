@@ -72,7 +72,7 @@ const obj = reactive({
 
 // 这里替换后端接口，但是需要确定一下字的数量，否则会出现答辩
 onMounted(() => {
-  const typed = new EasyTyper(
+  new EasyTyper(
     obj,
     `须知少日拏云志，曾许人间第一流。`,
     () => {},
