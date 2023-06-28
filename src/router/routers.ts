@@ -10,37 +10,43 @@ export const constantRoute = [
                 path: '/',
                 component: () => import('@/views/Home/index.vue'),
                 name: '/',
-            },   
+            },
             // 忘记多个语法的写法了，只能这样写了
             {
                 path: '/home',
                 component: () => import('@/views/Home/index.vue'),
                 name: 'home',
-            },  
+            },
             // 分类
             {
                 path: '/classify',
                 component: () => import('@/views/Classify/index.vue'),
                 name: 'classify',
-            },  
+            },
+            // 标签
+            {
+                path: '/label',
+                component: () => import('@/views/Label/index.vue'),
+                name: 'label',
+            },
             // 留言板
             {
                 path: '/message',
                 component: () => import('@/views/Message/index.vue'),
                 name: 'message',
-            },  
+            },
             // 时间轴
             {
                 path: '/time',
                 component: () => import('@/views/Time/index.vue'),
                 name: 'time',
-            },  
+            },
             // 关于我
             {
                 path: '/about',
                 component: () => import('@/views/About/index.vue'),
                 name: 'about',
-            },   
+            },
         ],
     },
     // 404

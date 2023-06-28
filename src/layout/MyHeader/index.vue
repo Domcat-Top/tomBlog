@@ -14,9 +14,16 @@
       <div class="items">
         <router-link to="/classify" class="hvr-underline-from-center">
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-fanganxin"></use>
+            <use xlink:href="#icon-shouye"></use>
           </svg>
           分类</router-link>
+      </div>
+      <div class="items">
+        <router-link to="/label" class="hvr-underline-from-center">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-shouye"></use>
+          </svg>
+          标签</router-link>
       </div>
       <div class="items">
         <a href="#" class="hvr-underline-from-center">

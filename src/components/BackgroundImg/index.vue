@@ -42,6 +42,15 @@ import Waves from '../Waves/index.vue';
                 position: relative;
                 left: 50%;
                 top: 50%;
+                animation: fontShow 0.7s;
+                @keyframes fontShow {
+                    0% {
+                        opacity: 0;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
             }
         }
     }
