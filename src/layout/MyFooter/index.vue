@@ -12,7 +12,7 @@
 
 <style lang="scss" scoped>
 .footer-wrapper {
-  margin-top: 20px;
+  margin-top: 25px;
   height: 100px;
   width: 100%;
   font-size: 15px;

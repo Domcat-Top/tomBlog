@@ -1,6 +1,8 @@
 <template>
   <!-- 最上面放一个波浪组件 -->
-  <Waves></Waves>
+  <!-- 波浪组件的高度，在不同的页面下，是不同的，由于 -->
+  <!-- 由于我的前端技艺不精，才导致了这个问题 -->
+  <Waves class="waves"></Waves>
   <div class="container">
     <div class="specific">
       <!-- 左边的卡片 -->
@@ -306,6 +308,9 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.waves {
+  top: $home-waves-height;
+}
 .container {
   position: absolute;
   top: 76vh;
@@ -315,7 +320,7 @@ onMounted(() => {
   // 版心
   .specific {
     margin-top: 20px;
-    width: 1160px;
+    width: $base-container-width;
     margin-left: calc((100% - 1160px) / 2);
     // 左右排布
     display: flex;

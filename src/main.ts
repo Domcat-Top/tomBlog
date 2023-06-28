@@ -1,8 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// 重置全局H5样式
-import '@/style/css/reset.css';
+
+// 全局样式统一管理
+import "@/style/css/index.scss";
 // 引入hover.css
 import 'hover.css';
 // 引入全局icon

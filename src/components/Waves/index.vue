@@ -32,7 +32,6 @@
 .waves {
   position: absolute;
   left: 0;
-  top:  64vh;
   width: 100%;
   height: 12vh;
   min-height: 3.125rem;

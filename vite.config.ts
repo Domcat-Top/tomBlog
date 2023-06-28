@@ -15,15 +15,14 @@ export default defineConfig(() => {
                 '@': path.resolve('./src'), // 相对路径别名配置，使用 @ 代替 src
             },
         },
-        // scss 全局变量的一个配置---指定了全局的样式和主题啥的
+        // scss 全局变量的一个配置---指定了全局的样式，颜色指定在了index.scss中
         css: {
             preprocessorOptions: {
                 scss: {
                     javascriptEnabled: true,
-                    additionalData: '@import "@/style/css/variable.scss";',
+                    additionalData: '@import "./src/style/css/variable.scss";',
                 },
             },
         },
-
     }
 })
