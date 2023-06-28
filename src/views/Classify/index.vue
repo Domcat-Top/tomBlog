@@ -11,20 +11,7 @@
             <use xlink:href="#icon-shouye"></use>
           </svg>
         </div>
-        <div class="articleChart">
-          文章统计图，这个是图表
-        </div>
-        <!-- 最下面一行，显示的是小蓝色圆圈和分类的名称以及当前分类的文章数 -->
-        <div class="classifyLine">
-          <!-- for循环这一部分，外面的负责整个架子的支撑 -->
-          <div class="item">
-            <!-- 这个图标后期要替换的，最后等项目结束再找图标吧 -->
-            <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-shouye"></use>
-            </svg>
-            <span style="margin-left: 5px">项目</span>
-          </div>
-        </div>
+        <div class="articleCharts" ref="articleCharts">1</div>
       </div>
       <!-- 页脚 -->
       <MyFooter></MyFooter>
@@ -35,6 +22,47 @@
 <script setup lang="ts">
 import BackgroundImg from '@/components/BackgroundImg/index.vue';
 import MyFooter from '@/layout/MyFooter/index.vue';
+// 引入内置的函数
+import { ref, onMounted } from 'vue'
+import * as echarts from 'echarts'
+// 获取图形图表的节点
+let articleCharts = ref()
+onMounted(() => {
+  let mycharts = echarts.init(articleCharts.value)
+  // 配置项
+  let option = {
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      orient: 'horizontal',
+      bottom: 'left'
+    },
+    series: [
+      {
+        type: 'pie',
+        radius: '50%',
+
+        data: [
+          { value: 1048, name: 'Search Engine' },
+          { value: 735, name: 'Direct' },
+          { value: 580, name: 'Email' },
+          { value: 484, name: 'Union Ads' },
+          { value: 300, name: 'Video Ads' }
+        ],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
+  };
+  mycharts.setOption(option)
+})
+
 </script>
   
 <style lang="scss" scoped>
@@ -59,17 +87,17 @@ import MyFooter from '@/layout/MyFooter/index.vue';
       width: $classify-container-width;
       // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
       box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+
+      // 版心的标题，可能会删掉，使用echarts自带的
       .title {
         font-size: 17px;
         font-weight: bold;
       }
 
-      .articleChart {
-        height: 300px;
-      }
-
-      .classifyLine {
-        .item {}
+      // 图表
+      .articleCharts {
+        height: 350px;
+        width: 300px;
       }
     }
   }
