@@ -1,6 +1,6 @@
 <template>
   <footer class="footer-wrapper">
-    <div class="item">© 2023 - Now</div>
+    <div class="item">Copyright &copy; Tom's website 2020 - to now</div>
     <div class="item">Author： Tom</div>
   </footer>
 </template>
@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   flex-direction:column;
-
+  
   .item {
     color: white;
   }

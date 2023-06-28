@@ -38,7 +38,7 @@ import Waves from '../Waves/index.vue';
                 font-size: 35px;
                 color: white;
                 letter-spacing: 0.1rem;
-                font-weight: bold;
+                font-weight: 550;
                 position: relative;
                 left: 50%;
                 top: 50%;

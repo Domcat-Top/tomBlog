@@ -28,7 +28,7 @@
       <div class="items">
         <a href="#" class="hvr-underline-from-center">
           <svg class="icon" aria-hidden="true">
-            <use xlink:href="#icon-shijian"></use>
+            <use xlink:href="#icon-shouye"></use>
           </svg>
           时间轴</a>
       </div>
