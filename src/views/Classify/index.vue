@@ -27,13 +27,8 @@ import { ref, onMounted } from 'vue'
 import * as echarts from 'echarts'
 // 获取图形图表的节点
 let articleCharts = ref()
-onMounted(() => {
-  let mycharts = echarts.init(articleCharts.value)
   // 配置项
   let option = {
-    tooltip: {
-      trigger: 'item'
-    },
     legend: {
       orient: 'horizontal',
       bottom: 'left'
@@ -41,15 +36,16 @@ onMounted(() => {
     series: [
       {
         type: 'pie',
-        radius: '50%',
-
+        radius: '60%',
+        // 数据
         data: [
           { value: 1048, name: 'Search Engine' },
           { value: 735, name: 'Direct' },
           { value: 580, name: 'Email' },
           { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' }
+          { value: 300, name: 'Video Ads' },
         ],
+        // 阴影样式
         emphasis: {
           itemStyle: {
             shadowBlur: 10,
@@ -60,7 +56,8 @@ onMounted(() => {
       }
     ]
   };
-  mycharts.setOption(option)
+onMounted(() => {
+  echarts.init(articleCharts.value).setOption(option);
 })
 
 </script>
