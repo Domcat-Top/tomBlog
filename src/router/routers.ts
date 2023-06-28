@@ -38,8 +38,8 @@ export const constantRoute = [
             // 关于我
             {
                 path: '/about',
-                component: () => import('@/views/Home/index.vue'),
-                name: 'home',
+                component: () => import('@/views/About/index.vue'),
+                name: 'about',
             },   
         ],
     },
