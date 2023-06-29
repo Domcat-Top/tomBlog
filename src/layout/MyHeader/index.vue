@@ -26,11 +26,11 @@
           标签</router-link>
       </div>
       <div class="items">
-        <a href="#" class="hvr-underline-from-center">
+        <router-link to="/time" class="hvr-underline-from-center">
           <svg class="icon" aria-hidden="true">
             <use xlink:href="#icon-shouye"></use>
           </svg>
-          时间轴</a>
+          归档</router-link>
       </div>
       <div class="items">
         <a href="#" class="hvr-underline-from-center">

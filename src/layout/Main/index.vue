@@ -15,7 +15,6 @@
 </script>
 
 <style lang="scss" scoped>
-// 这里可以写一些组件切换的动画效果，vue专属的写法
 // .fade-enter-from {
 //   opacity: 0;
 // }

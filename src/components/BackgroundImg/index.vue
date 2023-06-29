@@ -33,20 +33,20 @@ import Waves from '../Waves/index.vue';
             height: 100%;
             background: no-repeat 50% 50% / cover;
             background-image: url('https://static.ttkwsd.top/articles/84aae58f4246f8419cf018d7d7f6bae8.jpg');
-
             span {
-                font-size: 35px;
-                color: white;
-                letter-spacing: 0.1rem;
-                font-weight: 550;
                 position: relative;
-                left: 50%;
-                top: 50%;
-                animation: fontShow 0.7s;
-                @keyframes fontShow {
+                left: 46vw;
+                top: 30vh;
+                width: 500px;
+                color: white;
+                font-size: 50px;
+                line-height: 1.2;
+                animation: titleScale 1.2s;
+                @keyframes titleScale {
                     0% {
                         opacity: 0;
                     }
+
                     100% {
                         opacity: 1;
                     }

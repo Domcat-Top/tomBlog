@@ -35,7 +35,7 @@ export const constantRoute = [
                 component: () => import('@/views/Message/index.vue'),
                 name: 'message',
             },
-            // 时间轴
+            // 归档--叫做time了，按照时间顺序进行的排序
             {
                 path: '/time',
                 component: () => import('@/views/Time/index.vue'),
@@ -47,6 +47,7 @@ export const constantRoute = [
                 component: () => import('@/views/About/index.vue'),
                 name: 'about',
             },
+
         ],
     },
     // 404
@@ -66,5 +67,11 @@ export const constantRoute = [
         meta: {
             title: '404',
         },
+    },
+    // 测试页
+    {
+        path: '/test',
+        component: () => import('@/views/Test/index.vue'),
+        name: 'test',
     },
 ]
