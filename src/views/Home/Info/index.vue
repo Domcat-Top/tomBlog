@@ -311,6 +311,7 @@ onMounted(() => {
 .waves {
   top: $home-waves-height;
 }
+
 .container {
   position: absolute;
   top: 76vh;
@@ -325,6 +326,7 @@ onMounted(() => {
     // 左右排布
     display: flex;
     justify-content: space-between;
+    animation: slideUpIn 1s;
 
     // 左边的卡片列表
     .cardList {

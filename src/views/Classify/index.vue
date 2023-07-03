@@ -71,6 +71,7 @@ onMounted(() => {
     top: 66vh;
     width: 100%;
     background-color: white;
+    animation: slideUpIn 1s;
 
     .specificDiv {
       display: flex;

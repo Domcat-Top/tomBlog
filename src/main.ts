@@ -6,6 +6,7 @@ import App from './App.vue'
 import "@/style/css/index.scss";
 // 引入hover.css--悬停
 import 'hover.css';
+
 // 引入全局icon
 import '@/assets/icons/iconfont.js';
 
