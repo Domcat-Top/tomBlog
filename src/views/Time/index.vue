@@ -2,42 +2,33 @@
   <div class="container">
     <BackgroundImg></BackgroundImg>
     <div class="info">
+      <!-- 卡片 -->
       <div class="card">
-        <div class="container">
-          <!-- 上面的汇总显示 -->
-          <div class="titleLine">
-            <div class="timeline-box">
-              <div class="out-circle">
-                <div class="in-circle"></div>
+        <div class="timeLine">
+          <div class="title">
+            <!-- 时间轴上的小圆点 -->
+            <span class="dot"></span>
+            <span class="titleInfo">文章汇总 - 999</span>
+          </div>
+          <!-- 时间轴卡片 -->
+          <div class="item">
+            <!-- 时间轴上的小圆点 -->
+            <span class="dot"></span>
+            <!-- 内容区 -->
+            <div class="articleInfo">
+              <div class="cover">
+                <img src="../../assets/delete.png" alt="封面图">
               </div>
-              <div class="long-line"></div>
-            </div>
-            <!-- 右边的，看都不用看 -->
-            <div class="timeline-content">
-              <span>文章汇总 - <span>999</span></span>
+              <div class="dateAndTitle">
+                <a href="#">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-yonghu"></use>
+                  </svg>
+                  2023-02-20</a>
+                <span class="dateAndTitleTitle">文章标题</span>
+              </div>
             </div>
           </div>
-          <!-- 下面循环的个例 -->
-          <ul class="timeline-wrapper">
-            <li class="timeline-item">
-              <div class="timeline-box">
-                <div class="out-circle">
-                  <div class="in-circle"></div>
-                </div>
-                <div class="long-line"></div>
-              </div>
-              <!-- 右边的 -->
-              <div class="timeline-content">
-                <div class="cover">
-                  <img class="myImg" src="../../assets/logo.jpg" alt="">
-                </div>
-                <div class="info">
-                  <span>图标 + <span>日期</span></span>
-                  <span>文章的标题</span>
-                </div>
-              </div>
-            </li>
-          </ul>
         </div>
       </div>
       <!-- 页脚 -->
@@ -70,134 +61,128 @@ import MyFooter from '@/layout/MyFooter/index.vue';
       border-radius: 0.75rem;
       width: $classify-container-width;
       // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
-      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1); // 开启过渡
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 
-      .container {
-        margin-left: 10vw;
-        // 上面的标题
-        .titleLine {
-          margin-top: 20px;
-          margin-bottom: 30px;
+      // 时间轴
+      .timeLine {
+        width: 804px;
+        margin: 0 auto;
 
-          .timeline-box {
-            text-align: center;
+        // 文章汇总这句话
+        .title {
+          // 时间轴的宽度，这个颜色需要后期再次设计
+          border-left: 2px solid #49b1f5;
+          padding-left: 25px;
+          position: relative;
+
+          .dot {
             position: absolute;
-
-            .out-circle {
-              width: 16px;
-              height: 16px;
-              background: rgba(14, 116, 218, 0.1);
-              box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
-              /*opacity: 0.1;*/
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-
-              .in-circle {
-                width: 8px;
-                height: 8px;
-                margin: 0 auto;
-                background: rgba(14, 116, 218, 1);
-                border-radius: 50%;
-                box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
-              }
-            }
-
-            .long-line {
-              width: 2px;
-              height: 50px;
-              // 这个是来控制选中的颜色的！！！
-              background: rgba(0, 0, 0, 1);
-              opacity: 1;
-              margin-left: 8px;
-            }
+            display: block;
+            width: 14px;
+            height: 14px;
+            border-radius: 100%;
+            // 圆圈中心的颜色
+            background-color: white;
+            // 圆圈的颜色
+            border: 6px solid #49b1f5;
+            // 别忘记了边框的距离
+            left: -14px;
+            transition: 0.2s all;
           }
 
-          .timeline-content {
-            box-sizing: border-box;
-            margin-left: 20px;
+          // 字体居中，就不说了
+          .titleInfo {
+            font-size: 25px;
             height: 20px;
-            padding: 0 0 0 20px;
-            text-align: left;
-            font-size: 20px;
+            line-height: 25px;
+            margin-right: 30px;
+            color: black;
+          }
+
+          &:hover {
+            .dot {
+              // 圆圈的颜色
+              border: 6px solid #49b1f5;
+              // 圆圈中心的颜色
+              background-color: #ec8c69;
+            }
           }
         }
-        // 具体的 文章 格子
-        .timeline-wrapper {
-          .timeline-item {
-            position: relative;
-            margin-bottom: 15px;
 
-            .timeline-box {
-              text-align: center;
-              position: absolute;
+        // 时间轴卡片实体
+        .item {
+          width: 500px;
+          // 时间轴的宽度，这个颜色需要后期再次设计
+          border-left: 2px solid #49b1f5;
+          position: relative;
+          padding-top: 20px;
 
-              .out-circle {
-                width: 16px;
-                height: 16px;
-                background: rgba(14, 116, 218, 0.1);
-                box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
-                /*opacity: 0.1;*/
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
+          .dot {
+            position: absolute;
+            display: block;
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            // 圆圈中心的颜色
+            background-color: white;
+            // 圆圈的颜色
+            border: 2px solid #49b1f5;
+            left: -6px;
+            top: 50%;
+            // 向下位移半个圆的长度   （高度 + 边框） / 2
+            margin-top: 5px;
+            transition: 0.2s all;
 
-                .in-circle {
-                  width: 8px;
-                  height: 8px;
-                  margin: 0 auto;
-                  background: rgba(14, 116, 218, 1);
-                  border-radius: 50%;
-                  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
+          }
+
+          // 封面图 和 日期标题 的样式
+          .articleInfo {
+            width: 500px;
+            padding-left: 25px;
+            display: flex;
+
+            // 这个写法很重要，可以等比例缩小图片
+            .cover {
+              width: 120px;
+              height: 120px;
+              /* 隐藏掉那个条子 */
+              overflow: hidden;
+              border-radius: 10px;
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                transition: 0.5s all;
+
+                &:hover {
+                  transform: scale(1.1);
+                  border-radius: 10px;
                 }
-              }
-
-              .long-line {
-                width: 2px;
-                // 线的长度
-                height: 117px;
-                // 这个是来控制选中的颜色的！！！
-                background: rgba(0, 0, 0, 1);
-                opacity: 1;
-                margin-left: 8px;
               }
             }
 
-            // 内容区
-            .timeline-content {
-              box-sizing: border-box;
+            .dateAndTitle {
               margin-left: 20px;
-              padding: 0 0 0 20px;
-              text-align: left;
               display: flex;
-              .cover {
-                width: 120px;
-                height: 120px;
-                overflow: hidden;
-                border-radius: 12px;
-
-                .myImg {
-                  width: 100%;
-                  height: 100%;
-                  object-fit: cover;
-                }
-              }
-              // 右边要显示的--日期、标题
-              .info {
-                margin-left: 20px;
-              }
+              flex-direction: column;
+              text-align: left;
+              justify-content: center;
+              font-size: 15px;
+              line-height: 30px;
             }
           }
 
-          .timeline-item:last-of-type .timeline-content {
-            margin-bottom: 0;
+          &:hover {
+            .dot {
+              // 圆圈的颜色
+              background-color: #ec8c69;
+            }
+
+
           }
         }
-
-        /* 时间线 */
-
       }
-
     }
   }
 }

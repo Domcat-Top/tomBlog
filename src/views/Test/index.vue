@@ -1,193 +1,160 @@
 <template>
-  <div class="container">
-    <!-- 上面的汇总显示 -->
-    <div class="titleLine">
-      <div class="timeline-box">
-        <div class="out-circle">
-          <div class="in-circle"></div>
+  <div class="bg">
+    <div class="page-container">
+      <div class="archive-title">文章总览 - {{ count }}</div>
+      <div class="archive-list">
+        <div class="archive-item" v-for="archive in archivesList" :key="archive.id">
+          <router-link class="article-cover" :to="`/article/${archive.id}`">
+            <img class="cover" v-lazy="archive.articleCover">
+          </router-link>
+          <div class="article-info">
+            <!-- 时间那一行 -->
+            <div class="article-time">
+              <svg-icon icon-class="calendar" style="margin-right:0.4rem;"></svg-icon>
+              <time>{{ formatDate(archive.createTime) }}</time>
+            </div>
+            <router-link class="article-title" :to="`/article/${archive.id}`">
+              {{ archive.articleTitle }}
+            </router-link>
+          </div>
         </div>
-        <div class="long-line"></div>
       </div>
-      <!-- 右边的，看都不用看 -->
-      <div class="timeline-content">
-        <span>文章汇总 - <span>999</span></span>
-      </div>
+      <Pagination v-if="count > 0" v-model:current="queryParams.current" :total="Math.ceil(count / 5)">
+      </Pagination>
     </div>
-    <!-- 下面循环的个例 -->
-    <ul class="timeline-wrapper">
-      <li class="timeline-item">
-        <div class="timeline-box">
-          <div class="out-circle">
-            <div class="in-circle"></div>
-          </div>
-          <div class="long-line"></div>
-        </div>
-        <!-- 右边的 -->
-        <div class="timeline-content">
-          <div class="cover">
-            <img class="myImg" src="../../assets/logo.jpg" alt="">
-          </div>
-          <div class="info">
-            <span>图标 + <span>日期</span></span>
-            <span>文章的标题</span>
-          </div>
-        </div>
-      </li>
-      <li class="timeline-item">
-        <div class="timeline-box">
-          <div class="out-circle">
-            <div class="in-circle"></div>
-          </div>
-          <div class="long-line"></div>
-        </div>
-        <!-- 右边的 -->
-        <div class="timeline-content">
-          <div class="cover">
-            <img class="myImg" src="../../assets/logo.jpg" alt="">
-          </div>
-          <div class="info">
-            <span>图标 + <span>日期</span></span>
-            <span>文章的标题</span>
-          </div>
-        </div>
-      </li>
-    </ul>
   </div>
 </template>
   
 <script setup lang="ts">
 
 </script>
-  
+
+
 <style lang="scss" scoped>
-.container {
-  margin-left: 100px;
-  margin-top: 100px;
-  width: 600px;
-  height: 600px;
-  // 下面的删掉
-  background-color: darkgray;
+.page-container {
+  position: relative;
+  width: calc(100% - 0.625rem);
+  margin: 1.5rem auto;
+  padding: 1.75rem 2.25rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 1rem #000;
+  animation: slideUpIn 1s;
+
+  @keyframes slideUpIn {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.archive-title {
+  position: relative;
+  margin-left: 10px;
+  padding-bottom: 20px;
   padding-left: 20px;
-  padding-top: 20px;
+  font-size: 1.5rem;
 
-  // 上面的标题
-  .titleLine {
-    margin-bottom: 30px;
-    .timeline-box {
-      text-align: center;
-      position: absolute;
-
-      .out-circle {
-        width: 16px;
-        height: 16px;
-        background: rgba(14, 116, 218, 0.1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-
-        .in-circle {
-          width: 15px;
-          height: 15px;
-          margin: 0 auto;
-          // 这个是来控制选中颜色的！！！
-          background: rgba(14, 116, 218, 1);
-          border-radius: 50%;
-          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-        }
-      }
-
-      .long-line {
-        width: 2px;
-        height: 50px;
-        // 这个是来控制选中的颜色的！！！
-        background: rgba(0, 0, 0, 1);
-        opacity: 1;
-        margin-left: 8px;
-      }
-    }
-    .timeline-content {
-      box-sizing: border-box;
-      margin-left: 20px;
-      height: 20px;
-      padding: 0 0 0 20px;
-      text-align: left;      font-size: 20px;
-    }
-
+  &::before {
+    position: absolute;
+    top: 16px;
+    left: -8px;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border: 5px solid #49b1f5;
+    border-radius: 10px;
+    content: '';
+    line-height: 10px;
   }
 
-  // 具体的 文章 格子
-  .timeline-wrapper {
-    .timeline-item {
-      position: relative;
-      margin-bottom: 15px;
-      .timeline-box {
-        text-align: center;
-        position: absolute;
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    width: 2px;
+    height: 1.5em;
+    background: #aadafa;
+    content: '';
+  }
+}
 
-        .out-circle {
-          width: 16px;
-          height: 16px;
-          background: rgba(14, 116, 218, 0.1);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
+.archive-title:hover:before {
+  border-color: #ec8c69;
+}
 
-          .in-circle {
-            width: 15px;
-            height: 15px;
-            margin: 0 auto;
-            // 这个是来控制选中颜色的！！！
-            background: rgba(14, 116, 218, 1);
-            border-radius: 50%;
-            box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
-          }
-        }
+.archive-list {
+  margin-left: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #aadafa;
+}
 
-        .long-line {
-          width: 2px;
-          // 线的长度
-          height: 120px;
-          // 这个是来控制选中的颜色的！！！
-          background: rgba(0, 0, 0, 1);
-          opacity: 1;
-          margin-left: 8px;
-        }
-      }
-      // 内容区
-      .timeline-content {
-        box-sizing: border-box;
-        margin-left: 20px;
-        padding: 0 0 0 20px;
-        text-align: left;
-        display: flex;
+.archive-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 0 20px 10px;
 
-        .cover {
-          width: 120px;
-          height: 120px;
-          overflow: hidden;
-          border-radius: 12px;
+}
 
-          .myImg {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-        // 右边要显示的--日期、标题
-        .info {
-          margin-left: 20px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-      }
-    }
-    .timeline-item:last-of-type .timeline-content {
-      margin-bottom: 0;
-    }
+.archive-item:hover:before {
+  border-color: #ec8c69;
+}
+
+.archive-item::before {
+  position: absolute;
+  left: -36px;
+  width: 10px;
+  height: 10px;
+  border: 3px solid #49b1f5;
+  border-radius: 6px;
+  background: #fff;
+  content: '';
+}
+
+.article-cover {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 12px;
+
+  .cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 375ms ease-in 0.2s, transform 0.6s;
+  }
+}
+
+.cover:hover {
+  transform: scale(1.1);
+}
+
+.article-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0 1rem;
+
+  .article-time {
+    font-size: 14px;
   }
 
-  /* 时间线 */
+  .article-title {
+    font-size: 0.9rem;
+    margin: 2px 0;
+  }
+}
+
+.article-title:hover {
+  color: #e9546b;
+  transform: translateX(10px);
 
 }
 </style>
