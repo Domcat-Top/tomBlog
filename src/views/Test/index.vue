@@ -1,160 +1,172 @@
 <template>
-  <div class="bg">
-    <div class="page-container">
-      <div class="archive-title">文章总览 - {{ count }}</div>
-      <div class="archive-list">
-        <div class="archive-item" v-for="archive in archivesList" :key="archive.id">
-          <router-link class="article-cover" :to="`/article/${archive.id}`">
-            <img class="cover" v-lazy="archive.articleCover">
-          </router-link>
-          <div class="article-info">
-            <!-- 时间那一行 -->
-            <div class="article-time">
-              <svg-icon icon-class="calendar" style="margin-right:0.4rem;"></svg-icon>
-              <time>{{ formatDate(archive.createTime) }}</time>
+  <div class="container">
+    <BackgroundImg></BackgroundImg>
+    <div class="info">
+      <div class="card">
+        <div class="item">
+          <div class="myImg">
+            <img src="../../assets/delete.png" alt="">
+          </div>
+          <div class="articleInfo">
+            <div class="articleTitle">文章标题</div>
+            <div class="articleDateAndClassify">
+              <div class="date">
+                <a href="#" class="hvr-underline-from-center">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-liaotianduihua"></use>
+                  </svg>
+                  2023-07-04</a>
+              </div>
+              <div class="classify">
+                <a href="#" class="hvr-underline-from-center">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-liaotianduihua"></use>
+                  </svg>
+                  分类</a>
+              </div>
             </div>
-            <router-link class="article-title" :to="`/article/${archive.id}`">
-              {{ archive.articleTitle }}
-            </router-link>
+            <div class="articleLabel">
+              <div class="labelItem">
+                <a href="#" class="hvr-underline-from-center">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-liaotianduihua"></use>
+                  </svg>
+                  标签</a>
+              </div>
+            </div>
           </div>
         </div>
+        <!-- 删掉 -->
+        <div class="item">
+          <div class="myImg">
+            <img src="../../assets/delete2.png" alt="">
+          </div>
+          <div class="articleInfo">
+            <div class="articleTitle">文章标题</div>
+            <div class="articleDateAndClassify">
+              <div class="date">
+                <a href="#" class="hvr-underline-from-center">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-liaotianduihua"></use>
+                  </svg>
+                  2023-07-04</a>
+              </div>
+              <div class="classify">
+                <a href="#" class="hvr-underline-from-center">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-liaotianduihua"></use>
+                  </svg>
+                  分类</a>
+              </div>
+            </div>
+            <div class="articleLabel">
+              <div class="labelItem">
+                <a href="#" class="hvr-underline-from-center">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-liaotianduihua"></use>
+                  </svg>
+                  标签</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <Pagination v-if="count > 0" v-model:current="queryParams.current" :total="Math.ceil(count / 5)">
-      </Pagination>
+      <!-- 显示所有的标签，估计是for -->
+      <MyFooter></MyFooter>
     </div>
   </div>
 </template>
   
 <script setup lang="ts">
+import BackgroundImg from '@/components/BackgroundImg/index.vue';
+import MyFooter from '@/layout/MyFooter/index.vue';
 
 </script>
-
-
+  
 <style lang="scss" scoped>
-.page-container {
+.container {
   position: relative;
-  width: calc(100% - 0.625rem);
-  margin: 1.5rem auto;
-  padding: 1.75rem 2.25rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 0 1rem #000;
-  animation: slideUpIn 1s;
 
-  @keyframes slideUpIn {
-    0% {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-.archive-title {
-  position: relative;
-  margin-left: 10px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-  font-size: 1.5rem;
-
-  &::before {
+  // 这个要放页脚
+  .info {
     position: absolute;
-    top: 16px;
-    left: -8px;
-    z-index: 1;
-    width: 18px;
-    height: 18px;
-    border: 5px solid #49b1f5;
-    border-radius: 10px;
-    content: '';
-    line-height: 10px;
-  }
-
-  &::after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    z-index: 0;
-    width: 2px;
-    height: 1.5em;
-    background: #aadafa;
-    content: '';
-  }
-}
-
-.archive-title:hover:before {
-  border-color: #ec8c69;
-}
-
-.archive-list {
-  margin-left: 10px;
-  padding-left: 20px;
-  border-left: 2px solid #aadafa;
-}
-
-.archive-item {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin: 0 0 20px 10px;
-
-}
-
-.archive-item:hover:before {
-  border-color: #ec8c69;
-}
-
-.archive-item::before {
-  position: absolute;
-  left: -36px;
-  width: 10px;
-  height: 10px;
-  border: 3px solid #49b1f5;
-  border-radius: 6px;
-  background: #fff;
-  content: '';
-}
-
-.article-cover {
-  width: 120px;
-  height: 120px;
-  overflow: hidden;
-  border-radius: 12px;
-
-  .cover {
+    top: 66vh;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: filter 375ms ease-in 0.2s, transform 0.6s;
+    background-color: white;
+    animation: slideUpIn 1s;
+
+    .card {
+      margin: 0 auto;
+      text-align: left;
+      margin-top: 20px;
+      padding: 25px 20px 25px 30px;
+      border-radius: 0.75rem;
+      width: $classify-container-width;
+      // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      .item {
+        width: 330px;
+        border-radius: 10px;
+        margin: 10px 10px 10px 0px;
+        border-radius: 10px;
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+        // 开启过渡
+        transition: all 0.5s;
+
+        // 巧妙的写法，需要加一个取地址符，指定是父盒子吧
+        &:hover {
+          box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.3);
+
+          .myImg {
+            img {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        .myImg {
+          width: 100%;
+          height: 200px;
+          /* 隐藏掉那个条子 */
+          overflow: hidden;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.25s;
+          }
+        }
+
+        .articleInfo {
+          padding: .6rem .8rem 1rem;
+
+          .articleTitle {
+            font-size: 28px;
+            color: rgb(77, 77, 77, 1);
+          }
+
+          .articleDateAndClassify {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 15px;
+            color: rgb(77, 77, 77, 0.7);
+          }
+
+          .articleLabel {
+            margin-top: 5px;
+            font-size: 15px;
+            color: rgb(77, 77, 77, 0.7);
+          }
+        }
+      }
+    }
   }
-}
-
-.cover:hover {
-  transform: scale(1.1);
-}
-
-.article-info {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin: 0 1rem;
-
-  .article-time {
-    font-size: 14px;
-  }
-
-  .article-title {
-    font-size: 0.9rem;
-    margin: 2px 0;
-  }
-}
-
-.article-title:hover {
-  color: #e9546b;
-  transform: translateX(10px);
-
 }
 </style>
