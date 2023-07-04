@@ -41,6 +41,7 @@ import MyFooter from '@/layout/MyFooter/index.vue';
     top: 66vh;
     width: 100%;
     background-color: white;
+    animation: slideUpIn 1s;
 
     .card {
       margin: 0 auto;
@@ -50,7 +51,7 @@ import MyFooter from '@/layout/MyFooter/index.vue';
       border-radius: 0.75rem;
       width: $classify-container-width;
       // XY的偏移都是0，阴影范围是1rem单位的，然后阴影的颜色是这样的，透明度是0.1
-      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1); 
+      box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
       // 开启过渡
       transition: all 0.15s ease-in-out 0s;
 
