@@ -85,6 +85,7 @@
         line-height: 40px;
         font-size: 20px;
         margin-right: 10px;
+        text-shadow: 0 0 0.2rem rgba(0, 0, 0, 1);
       }
     }
 
