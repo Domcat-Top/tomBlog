@@ -183,17 +183,6 @@ onMounted(() => {
       font-size: 50px;
       line-height: 1.2;
       animation: titleScale 1.2s;
-      @keyframes titleScale {
-        0% {
-          opacity: 0;
-          transform: scale(0.7);
-        }
-
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
       @font-face {
         font-family: 'Fredericka-the-great';
         src: url('@/style/font/Fredericka-the-great.ttf');

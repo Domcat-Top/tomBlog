@@ -42,15 +42,6 @@ import Waves from '../Waves/index.vue';
                 font-size: 50px;
                 line-height: 1.2;
                 animation: titleScale 1.2s;
-                @keyframes titleScale {
-                    0% {
-                        opacity: 0;
-                    }
-
-                    100% {
-                        opacity: 1;
-                    }
-                }
             }
         }
     }

@@ -229,7 +229,7 @@ onMounted(() => {
   .specific {
     margin-top: 20px;
     width: $base-container-width;
-    margin-left: calc((100% - 1160px) / 2);
+    margin-left: calc((100% - $base-container-width) / 2);
     // 左右排布
     display: flex;
     justify-content: space-between;
