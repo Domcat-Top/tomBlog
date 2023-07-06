@@ -37,6 +37,10 @@
       </div>
     </div>
     <Waves class="waves"></Waves>
+    <!-- 这里放内容区 -->
+    <div class="articleContent">
+      123123123
+    </div>
   </div>
 </template>
   
